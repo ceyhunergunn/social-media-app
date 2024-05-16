@@ -22,6 +22,7 @@ import {
   useCreatePost,
   useUpdatePost,
 } from "@/lib/react-query/queriesAndMutations";
+import Loader from "../shared/Loader";
 
 type PostFormProps = {
   post?: Models.Document;
@@ -153,7 +154,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
             type="submit"
             className="shad-button_primary whitespace-nowrap"
           >
-            {isLoadingUpdate || (isLoadingCreate && "Loading...")}
+            {(isLoadingCreate || isLoadingUpdate) && <Loader />}
             {action} Post
           </Button>
         </div>
